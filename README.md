@@ -92,7 +92,7 @@ project/
 
 ### 3. Frontend Setup
 1. The frontend consists of static files. You can open `index.html` directly in your browser.
-2. Ensure that `frontend/js/config.js` has the correct `BASE_URL` pointing to your backend (default is `http://localhost:8000`).
+2. Ensure that `frontend/js/config.js` has the correct `BASE_URL` pointing to your backend (default is `https://smarthire-backend-lx7p.vercel.app`).
 
 ## 🤖 Chatbot System
 
