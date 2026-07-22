@@ -1,6 +1,10 @@
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from sqlalchemy import Column, Integer, String, Float, ForeignKey
 from sqlalchemy.orm import relationship
-from database import Base
+from database import Base  # pyrefly: ignore [missing-import] # type: ignore
 
 class User(Base):
     __tablename__ = "users"

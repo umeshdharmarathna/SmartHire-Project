@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 import jwt
 from datetime import datetime, timedelta
 from typing import Optional
@@ -6,8 +10,8 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 import bcrypt
 from sqlalchemy.orm import Session
 
-import models
-from database import get_db
+import models  # pyrefly: ignore [missing-import] # type: ignore
+from database import get_db  # pyrefly: ignore [missing-import] # type: ignore
 
 import os
 from dotenv import load_dotenv

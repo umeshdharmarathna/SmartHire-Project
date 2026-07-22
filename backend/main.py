@@ -9,11 +9,11 @@ from sqlalchemy.sql import func
 from typing import List, Optional
 import openai
 
-import models
-import schemas
-import auth
-from database import engine, get_db
-import chatbot
+import models  # pyrefly: ignore [missing-import] # type: ignore
+import schemas  # pyrefly: ignore [missing-import] # type: ignore
+import auth  # pyrefly: ignore [missing-import] # type: ignore
+from database import engine, get_db  # pyrefly: ignore [missing-import] # type: ignore
+import chatbot  # pyrefly: ignore [missing-import] # type: ignore
 
 from contextlib import asynccontextmanager
 

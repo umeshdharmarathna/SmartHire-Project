@@ -1,10 +1,13 @@
+import sys
 import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 import openai
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-import schemas
-import models
-from database import get_db
+import schemas  # pyrefly: ignore [missing-import] # type: ignore
+import models  # pyrefly: ignore [missing-import] # type: ignore
+from database import get_db  # pyrefly: ignore [missing-import] # type: ignore
 
 router = APIRouter()
 
