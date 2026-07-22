@@ -9,15 +9,11 @@ from sqlalchemy.sql import func
 from typing import List, Optional
 import openai
 
-try:
-    import models
-    import schemas
-    import auth
-    from database import engine, get_db
-    import chatbot
-except ImportError:
-    from backend import models, schemas, auth, chatbot
-    from backend.database import engine, get_db
+import models
+import schemas
+import auth
+from database import engine, get_db
+import chatbot
 
 from contextlib import asynccontextmanager
 
