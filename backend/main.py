@@ -15,28 +15,11 @@ import auth
 from database import engine, get_db
 import chatbot
 
-app = FastAPI(title="Smart Hire Backend API")
+from contextlib import asynccontextmanager
 
-# Configure CORS to allow frontend connections
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-@app.get("/")
-def root():
-    return {
-        "status": "online",
-        "message": "Smart Hire Backend API is running successfully!",
-        "documentation": "/docs"
-    }
-
-# Create Database tables and seed data safely on startup
-@app.on_event("startup")
-def startup_db():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup logic
     db = None
     try:
         models.Base.metadata.create_all(bind=engine)
@@ -121,6 +104,27 @@ def startup_db():
     finally:
         if db:
             db.close()
+    yield
+    # Shutdown logic (if any)
+
+app = FastAPI(title="Smart Hire Backend API", lifespan=lifespan)
+
+# Configure CORS to allow frontend connections
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get("/")
+def root():
+    return {
+        "status": "online",
+        "message": "Smart Hire Backend API is running successfully!",
+        "documentation": "/docs"
+    }
 
 
 # ================= AUTH ENDPOINTS =================
