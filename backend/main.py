@@ -2,7 +2,6 @@ import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-import os
 from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
@@ -15,8 +14,6 @@ import schemas
 import auth
 from database import engine, get_db
 import chatbot
-# Create Database tables
-models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Smart Hire Backend API")
 
@@ -29,16 +26,23 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Seed database with sample data if empty
+@app.get("/")
+def root():
+    return {
+        "status": "online",
+        "message": "Smart Hire Backend API is running successfully!",
+        "documentation": "/docs"
+    }
+
+# Create Database tables and seed data safely on startup
 @app.on_event("startup")
-def seed_data():
-    db = next(get_db())
+def startup_db():
+    db = None
     try:
-        # Check if users already exist
+        models.Base.metadata.create_all(bind=engine)
+        db = next(get_db())
         if db.query(models.User).count() == 0:
             print("Database is empty. Seeding initial data...")
-            
-            # Create Users
             admin_pwd = auth.get_password_hash("admin123")
             provider_pwd = auth.get_password_hash("provider123")
             customer_pwd = auth.get_password_hash("customer123")
@@ -58,9 +62,9 @@ def seed_data():
                 role="provider"
             )
             customer = models.User(
-                full_name="Kamal Perera",
+                full_name="Jane Customer",
                 email="customer@smarthire.com",
-                phone="0711122334",
+                phone="0771122334",
                 password_hash=customer_pwd,
                 role="customer"
             )
@@ -108,11 +112,15 @@ def seed_data():
             db.add(b1)
             db.commit()
             print("Database seeding completed.")
+        else:
+            print("Database already has data. Skipping seed.")
     except Exception as e:
-        db.rollback()
-        print(f"Error seeding data: {e}")
+        print(f"Error during startup: {e}")
+        if db:
+            db.rollback()
     finally:
-        db.close()
+        if db:
+            db.close()
 
 
 # ================= AUTH ENDPOINTS =================
