@@ -20,8 +20,9 @@ def chat_bot(request: schemas.ChatRequest, db: Session = Depends(get_db)):
     if api_key:
         try:
             openai.api_key = api_key
+            model_name = os.environ.get("MODEL_NAME", "gpt-4o-mini")
             response = openai.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model=model_name,
                 messages=[
                     {"role": "system", "content": "You are Smart Hire Assistant, a friendly support agent for Smart Hire, an on-demand local services platform. Assist the user with queries about services and bookings."},
                     {"role": "user", "content": request.message}

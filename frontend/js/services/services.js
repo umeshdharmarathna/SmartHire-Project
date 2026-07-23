@@ -38,7 +38,7 @@ if (servicesContainer) {
                     </div>
                     <div>
                         <div class="price">$${service.price}</div>
-                        <a href="service-detail.html?id=${service.id}" class="btn-primary btn-block" style="text-align:center; display:block;">Book Now</a>
+                        <a href="/pages/services/service-detail.html?id=${service.id}" class="btn-primary btn-block" style="text-align:center; display:block;">Book Now</a>
                     </div>
                 `;
                 servicesContainer.appendChild(card);

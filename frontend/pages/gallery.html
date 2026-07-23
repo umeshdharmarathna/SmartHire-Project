@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Hire - Photo Gallery</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gallery-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        .gallery-container h2 {
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="body">
+
+    <!-- Background Shapes -->
+    <div class="bg-shape shape1"></div>
+    <div class="bg-shape shape2"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Smart Hire</div>
+        <div class="nav-links" id="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="services/services.html">Services</a>
+            <a href="gallery.html" style="font-weight:600; color:var(--primary);">Gallery</a>
+            <a href="auth/login.html" class="btn-login">Login</a>
+            <a href="auth/register.html" class="btn-primary">Register</a>
+        </div>
+    </nav>
+
+    <!-- Gallery Section -->
+    <section class="gallery-container">
+        <h2>Our Work & Services Gallery</h2>
+        <p style="margin-bottom: 2rem; color: #555;">Browse through photos of our professional service providers in action.</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="../images/Web_Development.jpg" alt="Web Development"></div>
+            <div class="gallery-item"><img src="../images/photo-Gardening.jpg" alt="Gardening"></div>
+            <div class="gallery-item"><img src="../images/photo-Home Repairs.jpg" alt="Home Repairs"></div>
+            <div class="gallery-item"><img src="../images/photo-Moving Service.jpg" alt="Moving Service"></div>
+            <div class="gallery-item"><img src="../images/photo-Photography.jpg" alt="Photography"></div>
+            <div class="gallery-item"><img src="../images/photo-elec.jpg" alt="Electrician"></div>
+            <div class="gallery-item"><img src="../images/photo-teacher.jpg" alt="Tutoring"></div>
+            <div class="gallery-item"><img src="../images/work.jpg" alt="Our Work"></div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="../js/shared/config.js"></script>
+    <script src="../js/auth/auth.js"></script>
+    
+</body>
+</html>

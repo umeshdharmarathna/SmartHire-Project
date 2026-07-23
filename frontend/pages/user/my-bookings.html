@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Hire - My Bookings</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
 
@@ -22,10 +22,10 @@
 
 
     <nav class="navbar">
-        <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">Smart Hire</a></div>
+        <div class="logo"><a href="../../index.html" style="text-decoration:none; color:inherit;">Smart Hire</a></div>
         <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="services.html">Browse Services</a>
+            <a href="../../index.html">Home</a>
+            <a href="../services/services.html">Browse Services</a>
             <a href="#" id="logout-btn" class="btn-outline">Logout</a>
         </div>
     </nav>
@@ -37,8 +37,8 @@
         </div>
     </main>
 
-    <script src="js/config.js"></script>
-    <script src="js/bookings.js"></script>
+    <script src="../../js/shared/config.js"></script>
+    <script src="../../js/user/bookings.js"></script>
     <script>
         // FIX: page එකට ඇතුල් වෙනකොටම token එකක් නැත්නම් login page එකට යවනවා
         // (කලින් token check එකක්ම නෑ - bookings.js එකේ පණිවිඩයක් පෙන්නුවත්
@@ -46,13 +46,13 @@
         document.addEventListener('DOMContentLoaded', () => {
             if (!localStorage.getItem('token')) {
                 alert('Please login to view your bookings.');
-                window.location.href = 'login.html';
+                window.location.href = '../auth/login.html';
             }
         });
 
         document.getElementById('logout-btn').addEventListener('click', () => {
             localStorage.clear();
-            window.location.href = 'index.html';
+            window.location.href = '../../index.html';
         });
     </script>
 </body>

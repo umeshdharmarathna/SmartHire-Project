@@ -47,7 +47,7 @@ if (registerForm) {
 
             if (response.ok) {
                 alert('Registration successful! Please login.');
-                window.location.href = 'login.html';
+                window.location.href = '/pages/auth/login.html';
             } else {
                 const data = await response.json();
                 alert(`Registration failed: ${data.detail || 'Error occurred'}`);
@@ -98,13 +98,13 @@ if (loginForm) {
 
                 // පරිශීලකයාගේ භූමිකාව (Role) අනුව නිවැරදි Dashboard පිටුවට යොමු කිරීම
                 if (data.role === 'provider') {
-                    window.location.href = 'provider-dashboard.html';
+                    window.location.href = '/pages/dashboards/provider-dashboard.html';
                 } else if (data.role === 'admin') {
-                    window.location.href = 'admin-dashboard.html';
+                    window.location.href = '/pages/dashboards/admin-dashboard.html';
                 } else if (data.role === 'customer') {
-                    window.location.href = 'services.html'; // හෝ customer/dashboard.html
+                    window.location.href = '/pages/services/services.html';
                 } else {
-                    window.location.href = 'index.html';
+                    window.location.href = '/index.html';
                 }
             } else {
                 const data = await response.json();
@@ -126,19 +126,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (token && navLinksContainer) {
         // ලොග් වී ඇත්නම් පෙන්විය යුතු Dashboard ලින්ක් එක තීරණය කිරීම
-        let dashboardPage = 'services.html';
+        let dashboardPage = '/pages/services/services.html';
         if (role === 'provider') {
-            dashboardPage = 'provider-dashboard.html';
+            dashboardPage = '/pages/dashboards/provider-dashboard.html';
         } else if (role === 'admin') {
-            dashboardPage = 'admin-dashboard.html';
+            dashboardPage = '/pages/dashboards/admin-dashboard.html';
         }
 
         // පරණ Login/Register බොත්තම් වෙනුවට Profile, Dashboard සහ Logout බොත්තම ආදේශ කිරීම
         navLinksContainer.innerHTML = `
-            <a href="index.html">Home</a>
-            <a href="services.html">Services</a>
+            <a href="/index.html">Home</a>
+            <a href="/pages/services/services.html">Services</a>
+            <a href="/pages/gallery.html">Gallery</a>
             <a href="${dashboardPage}">Dashboard</a>
-            <a href="profile.html" style="font-weight:600; color:var(--primary);">My Profile</a>
+            <a href="/pages/user/profile.html" style="font-weight:600; color:var(--primary);">My Profile</a>
             <a href="#" id="logoutBtn" class="btn-outline" style="margin-left: 1.5rem; padding: 0.4rem 1rem;">Logout</a>
         `;
 
@@ -147,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             localStorage.clear(); // Token ඇතුළු සියලු දත්ත මකා දැමීම
             alert('Logged out successfully.');
-            window.location.href = 'index.html';
+            window.location.href = '/index.html';
         });
     }
 });

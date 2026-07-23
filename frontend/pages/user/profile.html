@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Hire - My Profile</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
 
     <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">
-            <a href="index.html" style="text-decoration:none; color:inherit;">Smart Hire</a>
+            <a href="../../index.html" style="text-decoration:none; color:inherit;">Smart Hire</a>
         </div>
         <div class="nav-links" id="nav-links">
-            <a href="index.html">Home</a>
-            <a href="services.html">Services</a>
+            <a href="../../index.html">Home</a>
+            <a href="../services/services.html">Services</a>
             <!-- auth.js මඟින් මෙම කොටස ස්වයංක්‍රීයව වෙනස් වනු ඇත -->
         </div>
     </nav>
@@ -64,10 +64,10 @@
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
-    <script src="js/config.js"></script>
-    <script src="js/auth.js"></script>
+    <script src="../../js/shared/config.js"></script>
+    <script src="../../js/auth/auth.js"></script>
     <script>
-        // NOTE: BASE_URL දැන් local විදිහට declare කරන්නේ නෑ - js/config.js
+        // NOTE: BASE_URL දැන් local විදිහට declare කරන්නේ නෑ - js/shared/config.js
         // එකෙන් load වෙන global BASE_URL එකම පාවිච්චි කරනවා (එකම තැනකින් manage කරන්න).
         document.addEventListener('DOMContentLoaded', async () => {
             const token = localStorage.getItem('token');
@@ -76,7 +76,7 @@
             // Token එක හෝ User ID එක නැතිනම් Login පිටුවට යොමු කිරීම
             if (!token || !userId) {
                 alert('Please login to view your profile.');
-                window.location.href = 'login.html';
+                window.location.href = '../auth/login.html';
                 return;
             }
 

@@ -41,7 +41,7 @@ if (detailCard && serviceId) {
         e.preventDefault();
         if (!token) {
             alert('Please login first to make a booking.');
-            window.location.href = 'login.html';
+            window.location.href = '/pages/auth/login.html';
             return;
         }
 
@@ -60,7 +60,7 @@ if (detailCard && serviceId) {
 
             if (response.ok) {
                 alert('Booking successfully placed!');
-                window.location.href = 'my-bookings.html';
+                window.location.href = '/pages/user/my-bookings.html';
             } else {
                 alert('Booking failed. Try again.');
             }

@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p><strong>Email:</strong> ${provider.email}</p>
                 ${provider.phone ? `<p><strong>Phone:</strong> ${provider.phone}</p>` : ""}
                 <br>
-                <a href="services.html" class="btn-outline">View Their Services</a>
+                <a href="/pages/services/services.html" class="btn-outline">View Their Services</a>
             `;
             providersContainer.appendChild(card);
         });
